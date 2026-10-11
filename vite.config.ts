@@ -5,6 +5,8 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    // Rutas relativas para que funcione en GitHub Pages (/MiragePerfumes-TINO10/).
+    base: './',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {

@@ -17,10 +17,10 @@ export const ProductModal: React.FC<ProductModalProps> = ({
   isWishlisted,
   onToggleWishlist,
 }) => {
-  if (!fragrance) return null;
-
   const [selectedFormat, setSelectedFormat] = useState<DecantFormat>('5ml');
   const [addedAnimation, setAddedAnimation] = useState(false);
+
+  if (!fragrance) return null;
 
   const getPrice = (fmt: DecantFormat) => {
     switch (fmt) {

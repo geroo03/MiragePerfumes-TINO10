@@ -18,13 +18,13 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   onRemoveItem,
   onClearCart,
 }) => {
-  if (!isOpen) return null;
-
   const [paymentMethod, setPaymentMethod] = useState<'transferencia' | 'mercadopago'>('transferencia');
   const [shippingMethod, setShippingMethod] = useState<'andreani' | 'correo'>('andreani');
   const [customerName, setCustomerName] = useState('');
   const [customerCity, setCustomerCity] = useState('');
   const [orderSent, setOrderSent] = useState(false);
+
+  if (!isOpen) return null;
 
   const subtotal = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const transferDiscount = paymentMethod === 'transferencia' ? subtotal * 0.15 : 0;

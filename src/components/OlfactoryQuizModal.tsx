@@ -13,13 +13,13 @@ export const OlfactoryQuizModal: React.FC<OlfactoryQuizModalProps> = ({
   onClose,
   onSelectFragrance,
 }) => {
-  if (!isOpen) return null;
-
   const [step, setStep] = useState(1);
   const [occasion, setOccasion] = useState<string>('');
   const [scentFamily, setScentFamily] = useState<string>('');
   const [intensity, setIntensity] = useState<string>('');
   const [result, setResult] = useState<Fragrance | null>(null);
+
+  if (!isOpen) return null;
 
   const handleFinish = (chosenIntensity: string) => {
     setIntensity(chosenIntensity);

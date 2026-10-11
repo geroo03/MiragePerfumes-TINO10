@@ -104,9 +104,11 @@ export default function App() {
     );
 
     if (existingIndex > -1) {
-      const updated = [...cartItems];
-      updated[existingIndex].quantity += 1;
-      setCartItems(updated);
+      setCartItems(
+        cartItems.map((item, i) =>
+          i === existingIndex ? { ...item, quantity: item.quantity + 1 } : item
+        )
+      );
     } else {
       const newItem: CartItem = {
         id: `${fragrance.id}-${format}-${Date.now()}`,
@@ -524,23 +526,28 @@ export default function App() {
       />
 
       {/* Product Quick View / Olfactory Pyramid Modal */}
-      <ProductModal
-        fragrance={selectedProduct}
-        onClose={() => setSelectedProduct(null)}
-        onAddToCart={handleAddToCart}
-        isWishlisted={selectedProduct ? wishlist.some((w) => w.id === selectedProduct.id) : false}
-        onToggleWishlist={handleToggleWishlist}
-      />
+      {selectedProduct && (
+        <ProductModal
+          key={selectedProduct.id}
+          fragrance={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+          onAddToCart={handleAddToCart}
+          isWishlisted={selectedProduct ? wishlist.some((w) => w.id === selectedProduct.id) : false}
+          onToggleWishlist={handleToggleWishlist}
+        />
+      )}
 
       {/* Shopping Bag Drawer */}
-      <CartDrawer
-        isOpen={cartOpen}
-        onClose={() => setCartOpen(false)}
-        items={cartItems}
-        onUpdateQuantity={handleUpdateCartQuantity}
-        onRemoveItem={handleRemoveCartItem}
-        onClearCart={() => setCartItems([])}
-      />
+      {cartOpen && (
+        <CartDrawer
+          isOpen={cartOpen}
+          onClose={() => setCartOpen(false)}
+          items={cartItems}
+          onUpdateQuantity={handleUpdateCartQuantity}
+          onRemoveItem={handleRemoveCartItem}
+          onClearCart={() => setCartItems([])}
+        />
+      )}
 
       {/* Wishlist Drawer */}
       <WishlistDrawer
@@ -552,14 +559,16 @@ export default function App() {
       />
 
       {/* Interactive Olfactory Quiz Modal */}
-      <OlfactoryQuizModal
-        isOpen={quizOpen}
-        onClose={() => setQuizOpen(false)}
-        onSelectFragrance={(frag) => setSelectedProduct(frag)}
-      />
+      {quizOpen && (
+        <OlfactoryQuizModal
+          isOpen={quizOpen}
+          onClose={() => setQuizOpen(false)}
+          onSelectFragrance={(frag) => setSelectedProduct(frag)}
+        />
+      )}
 
       {/* Profile & Batch Verification Modal */}
-      <ProfileModal isOpen={profileOpen} onClose={() => setProfileOpen(false)} />
+      {profileOpen && <ProfileModal isOpen={profileOpen} onClose={() => setProfileOpen(false)} />}
     </div>
   );
 }

@@ -6,8 +6,6 @@ interface ProfileModalProps {
 }
 
 export const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
-
   const [batchCodeInput, setBatchCodeInput] = useState('');
   const [verifiedResult, setVerifiedResult] = useState<{
     valid: boolean;
@@ -15,6 +13,8 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) =
     date?: string;
     origin?: string;
   } | null>(null);
+
+  if (!isOpen) return null;
 
   const handleVerify = (e: React.FormEvent) => {
     e.preventDefault();
