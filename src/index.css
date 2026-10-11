@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-serif: "EB Garamond", Garamond, serif;
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-primary: #28331a;
+  --color-primary-container: #3e4a2f;
+  --color-secondary: #566341;
+  --color-secondary-container: #d6e5bb;
+  --color-on-secondary-container: #5a6745;
+  --color-tertiary: #2a3320;
+  --color-tertiary-container: #404935;
+  --color-surface: #fef9ed;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f8f3e7;
+  --color-surface-container: #f3ede1;
+  --color-surface-container-high: #ede8dc;
+  --color-surface-container-highest: #e7e2d6;
+  --color-on-surface: #1d1c14;
+  --color-on-surface-variant: #45483f;
+  --color-outline: #76786e;
+  --color-outline-variant: #c6c8bc;
+}
+
+@layer base {
+  body {
+    background-color: #fef9ed;
+    color: #1d1c14;
+    font-family: "EB Garamond", Georgia, serif;
+    overscroll-behavior-y: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.font-playfair {
+  font-family: "Playfair Display", Georgia, serif;
+}
+.font-garamond {
+  font-family: "EB Garamond", Garamond, serif;
+}
+.font-work {
+  font-family: "Work Sans", sans-serif;
+}

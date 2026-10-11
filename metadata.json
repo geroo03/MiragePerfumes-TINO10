@@ -1,0 +1,6 @@
+{
+  "name": "Mirage Parfums & Decants",
+  "description": "Atelier de alta perfumería nicho, joyas árabes y decants artesanales macerados en Buenos Aires.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
