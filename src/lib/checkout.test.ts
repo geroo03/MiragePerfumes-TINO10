@@ -23,7 +23,7 @@ describe('formato de precios', () => {
 });
 
 describe('totales del carrito', () => {
-  it('aplica descuento por transferencia y cobra envío bajo el mínimo', () => {
+  it('cobra envío bajo el mínimo y aplica el descuento configurado (hoy 0)', () => {
     const items = [line(0, '5ml', 2)]; // 2 x 9.200
     const t = cartTotals(items, 'transferencia', 'andreani');
     expect(t.subtotal).toBe(18400);
@@ -33,14 +33,21 @@ describe('totales del carrito', () => {
     expect(t.missingForFreeShipping).toBe(SITE.freeShippingThreshold - 18400);
   });
 
-  it('no descuenta con Mercado Pago', () => {
-    const t = cartTotals([line(0, '5ml', 1)], 'mercadopago', 'correo');
+  it('no descuenta con efectivo', () => {
+    const t = cartTotals([line(0, '5ml', 1)], 'efectivo', 'correo');
     expect(t.discount).toBe(0);
     expect(t.shippingCost).toBe(3800);
   });
 
+  it('el retiro en Santiago del Estero no tiene costo', () => {
+    const t = cartTotals([line(0, '5ml', 1)], 'efectivo', 'retiro');
+    expect(t.isPickup).toBe(true);
+    expect(t.shippingCost).toBe(0);
+    expect(t.total).toBe(t.subtotal);
+  });
+
   it('bonifica el envío desde el mínimo', () => {
-    const t = cartTotals([line(0, 'full', 2)], 'mercadopago', 'andreani'); // 169.000
+    const t = cartTotals([line(0, 'full', 2)], 'transferencia', 'andreani'); // 169.000
     expect(t.freeShipping).toBe(true);
     expect(t.shippingCost).toBe(0);
     expect(t.missingForFreeShipping).toBe(0);
@@ -68,6 +75,17 @@ describe('catálogo', () => {
 describe('pedido por WhatsApp', () => {
   const items = [line(0, '5ml', 1), line(1, '10ml', 2)];
   const msg = buildOrderMessage(items, 'transferencia', 'andreani', { name: 'Ana & Co', city: 'Córdoba' });
+
+  it('sin descuento no menciona descuentos', () => {
+    expect(msg).not.toMatch(/descuento/i);
+    expect(msg).toContain('*Pago:* Transferencia');
+  });
+
+  it('el retiro figura como entrega a coordinar', () => {
+    const pickup = buildOrderMessage(items, 'efectivo', 'retiro', { name: '', city: '' });
+    expect(pickup).toContain('*Entrega:* Retiro en Santiago del Estero (a coordinar)');
+    expect(pickup).toContain('*Pago:* Efectivo');
+  });
 
   it('incluye cliente, productos y total', () => {
     expect(msg).toContain('Ana & Co');

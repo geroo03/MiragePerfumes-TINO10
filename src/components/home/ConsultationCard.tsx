@@ -32,7 +32,7 @@ export const ConsultationCard: React.FC<ConsultationCardProps> = ({ onOpenQuiz }
             </div>
 
             <p className="font-garamond text-base sm:text-lg text-on-surface-variant leading-relaxed mb-6">
-              El universo de los perfumes árabes y de autor puede ser abrumador con tantas notas de oud, ámbar y especias. Contanos qué fragancias usás hoy, para qué ocasión lo buscás o qué clima preferís y te orientamos mano a mano con recomendaciones precisas según tu perfil olfativo.
+              El universo de los perfumes árabes y de diseñador puede ser abrumador con tantas notas de oud, ámbar y especias. Contanos qué fragancias usás hoy, para qué ocasión lo buscás o qué clima preferís y te orientamos mano a mano con recomendaciones precisas según tu perfil olfativo.
             </p>
           </div>
 
@@ -107,14 +107,14 @@ export const ConsultationCard: React.FC<ConsultationCardProps> = ({ onOpenQuiz }
               {/* Feature 3 */}
               <div className="flex items-start gap-3.5 p-3 rounded-xl bg-surface-container/80 border border-outline-variant/30">
                 <div className="w-10 h-10 rounded-full bg-secondary-container text-primary flex items-center justify-center shrink-0 mt-0.5">
-                  <span className="material-symbols-outlined text-[20px]">credit_card</span>
+                  <span className="material-symbols-outlined text-[20px]">payments</span>
                 </div>
                 <div>
                   <h4 className="font-playfair text-base sm:text-lg font-bold text-primary">
-                    Financiación &amp; Descuento
+                    Pagás como te quede cómodo
                   </h4>
                   <p className="font-garamond text-sm text-on-surface-variant leading-snug">
-                    Aboná en {SITE.installmentsLabel} con Mercado Pago o disfrutá de un <strong>{Math.round(SITE.transferDiscount * 100)}% OFF</strong> pagando con transferencia bancaria.
+                    Aboná en <strong>efectivo</strong> al retirar en {SITE.city.split(',')[0]} o por <strong>transferencia</strong>, también para envíos a todo el país.
                   </p>
                 </div>
               </div>

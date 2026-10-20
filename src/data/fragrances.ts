@@ -113,33 +113,6 @@ export const FRAGRANCES: Fragrance[] = [
     season: ['Otoño', 'Invierno']
   },
   {
-    id: 'aurelia-essence-d-ambre',
-    name: "Aurélia Essence d'Ambre",
-    house: 'Mirage Atelier',
-    badge: 'Novedad',
-    category: ['all', 'decants', 'unisex', 'femeninos'],
-    gender: 'Unisex',
-    shortNotes: 'Ámbar blanco · Higo maduro · Cedro del Líbano',
-    description: 'Creación insignia del atelier. Maceración lenta de 180 días que combina la cremosidad láctea del higo mediterráneo con resinas ambarinas transparentes y maderas balsámicas.',
-    image: img('hero-aurelia.jpg'),
-    imageAlt: 'Aurelia Essence d Ambre botella artesanal de autor',
-    fullBottlePrice: 112000,
-    decant5mlPrice: 11800,
-    decant10mlPrice: 21500,
-    batchCode: 'MRG-AUR-2024A',
-    concentration: 'Extrait de Parfum',
-    origin: 'Buenos Aires / Grasse',
-    pyramid: {
-      salida: ['Hojas de higuera', 'Cardamomo verde', 'Bergamota'],
-      corazon: ['Leche de higo', 'Iris florentino', 'Incienso blanco'],
-      fondo: ['Ámbar gris suave', 'Cedro del Líbano', 'Sándalo cremoso']
-    },
-    longevity: '11-13 horas',
-    sillage: 'Moderada',
-    occasion: 'Firmas personales, momentos introspectivos, eventos culturales',
-    season: ['Primavera', 'Otoño', 'Todo el año']
-  },
-  {
     id: 'lattafa-oud-for-glory',
     name: 'Bade\'e Al Oud (Oud for Glory)',
     house: 'Lattafa',
@@ -192,33 +165,6 @@ export const FRAGRANCES: Fragrance[] = [
     sillage: 'Enorme',
     occasion: 'Verano, tardes soleadas, citas divertidas, todo el año',
     season: ['Primavera', 'Verano', 'Todo el año']
-  },
-  {
-    id: 'creed-aventus-millesime',
-    name: 'Aventus Millésime',
-    house: 'Creed',
-    badge: 'Exclusivo',
-    category: ['all', 'disenador', 'decants', 'masculinos'],
-    gender: 'Masculino',
-    shortNotes: 'Piña ahumada · Abedul · Almizcle real',
-    description: 'El icono definitivo del lujo masculino. Creado en honor al emperador Napoleón, combina piña jugosa y grosella negra con el inconfundible corazón ahumado de abedul de Luisiana.',
-    image: img('aventus-millesime.jpg'),
-    imageAlt: 'Creed Aventus frasco histórico con jinete en relieve',
-    fullBottlePrice: 420000,
-    decant5mlPrice: 32000,
-    decant10mlPrice: 59000,
-    batchCode: 'CR-F000388',
-    concentration: 'Eau de Parfum',
-    origin: 'Francia',
-    pyramid: {
-      salida: ['Piña real', 'Bergamota italiana', 'Grosellas negras', 'Manzana verde'],
-      corazon: ['Abedul ahumado', 'Pachulí noble', 'Jazmín de Marruecos', 'Rosa'],
-      fondo: ['Almizcle', 'Musgo de roble', 'Ámbar gris natural', 'Vainilla']
-    },
-    longevity: '9-11 horas',
-    sillage: 'Pesada',
-    occasion: 'Reuniones de alto impacto, casamientos, status indiscutible',
-    season: ['Primavera', 'Verano', 'Otoño']
   }
 ];
 

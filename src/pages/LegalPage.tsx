@@ -24,7 +24,6 @@ const Shell: React.FC<{ eyebrow: string; title: string; children: React.ReactNod
 );
 
 export const TermsPage: React.FC = () => {
-  const discountPct = Math.round(SITE.transferDiscount * 100);
   return (
     <Shell eyebrow="Información legal" title="Términos y condiciones">
       <Block title="1. Quiénes somos">
@@ -45,13 +44,13 @@ export const TermsPage: React.FC = () => {
       <Block title="3. Precios y medios de pago">
         <p>
           Los precios están expresados en pesos argentinos y pueden modificarse sin previo aviso; se respeta siempre el
-          precio vigente al momento de confirmar tu pedido. Aceptamos transferencia bancaria (con {discountPct}% de descuento)
-          y Mercado Pago ({SITE.installmentsLabel}, según las condiciones vigentes de Mercado Pago).
+          precio vigente al momento de confirmar tu pedido. Aceptamos efectivo (en entregas en mano y retiros en
+          {' '}{SITE.city.split(',')[0]}) y transferencia bancaria o desde billeteras virtuales.
         </p>
       </Block>
       <Block title="4. Productos y decants">
         <p>
-          Comercializamos perfumes originales. Los decants son fracciones del perfume original que envasamos nosotros en
+          Comercializamos perfumes originales árabes y de diseñador. Los decants son fracciones del perfume original que envasamos nosotros en
           atomizadores de vidrio; no son productos envasados por la marca. Las marcas y nombres comerciales pertenecen a sus
           respectivos titulares. Las imágenes son ilustrativas.
         </p>

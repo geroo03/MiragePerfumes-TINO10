@@ -6,7 +6,7 @@ export const SITE = {
   name: 'Mirage Parfums & Decants',
   shortName: 'Mirage',
   tagline: 'Parfums & Decants',
-  city: 'Buenos Aires, Argentina',
+  city: 'Santiago del Estero, Argentina',
   foundedYear: 2024,
 
   /**
@@ -22,19 +22,26 @@ export const SITE = {
 
   attentionHours: 'Lunes a sábado de 10:00 a 20:00 hs',
 
-  /** Descuento por pago con transferencia (0.15 = 15%). */
-  transferDiscount: 0.15,
+  /**
+   * Descuento por pago con transferencia (0.15 = 15%). En 0 no se muestra en ningún lado.
+   */
+  transferDiscount: 0,
   /** Compras desde este subtotal (ARS) tienen envío bonificado. */
   freeShippingThreshold: 90000,
-  installmentsLabel: '3 y 6 cuotas',
+
+  paymentMethods: [
+    { id: 'efectivo', label: 'Efectivo', hint: 'Al retirar o en la entrega' },
+    { id: 'transferencia', label: 'Transferencia', hint: 'Bancaria o billetera virtual' },
+  ],
 
   shippingOptions: [
+    { id: 'retiro', label: 'Retiro en Santiago del Estero', shortLabel: 'Retiro', cost: 0 },
     { id: 'andreani', label: 'Andreani Express', shortLabel: 'Andreani', cost: 4500 },
     { id: 'correo', label: 'Correo Argentino', shortLabel: 'Correo Arg.', cost: 3800 },
   ],
 } as const;
 
 export type ShippingOptionId = (typeof SITE.shippingOptions)[number]['id'];
-export type PaymentMethod = 'transferencia' | 'mercadopago';
+export type PaymentMethod = (typeof SITE.paymentMethods)[number]['id'];
 
 export const INSTAGRAM_URL = `https://instagram.com/${SITE.instagramHandle}`;

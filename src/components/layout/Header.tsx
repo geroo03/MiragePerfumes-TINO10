@@ -32,7 +32,6 @@ export const Header: React.FC<HeaderProps> = ({
   onSearch,
 }) => {
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
-  const discountPct = Math.round(SITE.transferDiscount * 100);
 
   const searchInput = (className: string, placeholder: string, autoFocus = false) => (
     <input
@@ -49,7 +48,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className="fixed top-0 left-0 right-0 z-40 bg-surface-container-highest/95 backdrop-blur-md border-b border-primary-container/20 shadow-[0_1px_8px_rgba(40,51,26,0.06)]">
       <div className="hidden md:flex items-center justify-center h-7 bg-primary text-surface-container-low text-[11px] font-work uppercase tracking-[0.14em] font-medium">
-        ✦ {SITE.installmentsLabel} con Mercado Pago · {discountPct}% OFF por transferencia · Envíos a todo el país ✦
+        ✦ Perfumes árabes y de diseñador · Efectivo o transferencia · Envíos a todo el país ✦
       </div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 md:h-18 flex items-center justify-between gap-4">

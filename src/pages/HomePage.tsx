@@ -28,7 +28,7 @@ export const HomePage: React.FC<{ shop: ShopActions; onOpenQuiz: () => void }> =
         <SectionHeading
           eyebrow="Destacados del atelier"
           title="Los más pedidos"
-          subtitle="Selección curada de los aromas favoritos de nuestra comunidad porteña y federal."
+          subtitle="Selección curada de los aromas favoritos de nuestra comunidad santiagueña y de todo el país."
         />
         <ProductGrid fragrances={FEATURED} {...shop} />
         <div className="flex justify-center mt-8">

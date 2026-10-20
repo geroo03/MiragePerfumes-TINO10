@@ -24,7 +24,6 @@ const Heading: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 );
 
 export const Footer: React.FC = () => {
-  const discountPct = Math.round(SITE.transferDiscount * 100);
   return (
     <footer className="w-full bg-primary text-surface-container-low border-t border-primary-container">
       <div className="max-w-7xl mx-auto px-5 md:px-8 pt-12 md:pt-16 pb-36 lg:pb-24">
@@ -33,7 +32,7 @@ export const Footer: React.FC = () => {
             <p className="font-playfair text-xl md:text-2xl font-bold tracking-widest uppercase text-surface">{SITE.shortName}</p>
             <p className="font-work text-[10px] tracking-[0.2em] uppercase text-sage-muted mb-3">{SITE.tagline}</p>
             <p className="font-garamond text-sm text-sage/90 leading-relaxed italic mb-4">
-              Perfumería árabe, de diseñador y de nicho. Frascos completos y decants fraccionados a mano en {SITE.city.split(',')[0]}.
+              Perfumería árabe y de diseñador. Frascos completos y decants fraccionados a mano en {SITE.city.split(',')[0]}.
             </p>
             <a
               href={INSTAGRAM_URL}
@@ -82,7 +81,7 @@ export const Footer: React.FC = () => {
               Envíos asegurados a toda la Argentina. Bonificados desde {formatARS(SITE.freeShippingThreshold)}.
             </p>
             <ul className="flex flex-wrap gap-1.5">
-              {[...SITE.shippingOptions.map((o) => o.label), `Transferencia (-${discountPct}%)`, 'Mercado Pago', SITE.installmentsLabel].map(
+              {[...SITE.shippingOptions.map((o) => o.label), ...SITE.paymentMethods.map((m) => m.label)].map(
                 (label) => (
                   <li
                     key={label}

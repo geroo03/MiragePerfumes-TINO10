@@ -87,7 +87,7 @@ export default function App() {
   }, [section, product]);
 
   useEffect(() => {
-    document.title = pageTitle ? `${pageTitle} | ${SITE.name}` : `${SITE.name} | Perfumería árabe, de nicho y decants`;
+    document.title = pageTitle ? `${pageTitle} | ${SITE.name}` : `${SITE.name} | Perfumería árabe y de diseñador`;
   }, [pageTitle]);
 
   const handleSearch = (q: string) => {

@@ -44,7 +44,7 @@ export const CatalogPage: React.FC<CatalogPageProps> = ({ shop, category, decant
         subtitle={
           decantsMode
             ? 'Fraccionados en frascos de vidrio de 5 ml (~70 atomizaciones) y 10 ml (~140 atomizaciones).'
-            : 'Joyas árabes, perfumería de nicho y lanzamientos de diseñador.'
+            : 'Joyas árabes y lanzamientos de las grandes casas de diseñador.'
         }
       />
 

@@ -25,6 +25,8 @@ export interface CartTotals {
   discount: number;
   shippingCost: number;
   freeShipping: boolean;
+  /** Opción sin costo de envío (retiro / entrega local). */
+  isPickup: boolean;
   /** Cuánto falta para el envío gratis (0 si ya aplica). */
   missingForFreeShipping: number;
   total: number;
@@ -41,12 +43,14 @@ export const cartTotals = (
   const freeShipping = subtotal >= SITE.freeShippingThreshold;
   const option = SITE.shippingOptions.find((o) => o.id === shipping) ?? SITE.shippingOptions[0];
   const shippingCost = freeShipping || items.length === 0 ? 0 : option.cost;
+  const isPickup = option.cost === 0;
   return {
     itemCount,
     subtotal,
     discount,
     shippingCost,
     freeShipping,
+    isPickup,
     missingForFreeShipping: Math.max(0, SITE.freeShippingThreshold - subtotal),
     total: Math.max(0, subtotal - discount + shippingCost),
   };

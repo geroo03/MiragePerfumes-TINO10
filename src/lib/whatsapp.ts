@@ -38,14 +38,15 @@ export const buildOrderMessage = (
 
   lines.push('', `*Subtotal:* ${formatARS(t.subtotal)}`);
   if (t.discount > 0) lines.push(`*Descuento transferencia (-${discountPct}%):* -${formatARS(t.discount)}`);
-  lines.push(`*Envío (${shippingOption.label}):* ${t.shippingCost === 0 ? 'Bonificado' : formatARS(t.shippingCost)}`);
-  lines.push(`*TOTAL:* ${formatARS(t.total)} ARS`, '');
   lines.push(
-    `*Pago:* ${
-      payment === 'transferencia'
-        ? `Transferencia bancaria (-${discountPct}% aplicado)`
-        : `Mercado Pago (${SITE.installmentsLabel})`
-    }`,
+    t.isPickup
+      ? `*Entrega:* ${shippingOption.label} (a coordinar)`
+      : `*Envío (${shippingOption.label}):* ${t.shippingCost === 0 ? 'Bonificado' : formatARS(t.shippingCost)}`
+  );
+  lines.push(`*TOTAL:* ${formatARS(t.total)} ARS`, '');
+  const paymentLabel = SITE.paymentMethods.find((m) => m.id === payment)?.label ?? payment;
+  lines.push(
+    `*Pago:* ${paymentLabel}${t.discount > 0 ? ` (-${discountPct}% aplicado)` : ''}`,
     '',
     '_Quedo a la espera de la confirmación de stock y los datos de pago._'
   );

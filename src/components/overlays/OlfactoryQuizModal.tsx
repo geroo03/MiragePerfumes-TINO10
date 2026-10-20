@@ -33,9 +33,7 @@ export const OlfactoryQuizModal: React.FC<OlfactoryQuizModalProps> = ({
       matched = byId('armaf-club-de-nuit-intense');
     } else if (scentFamily === 'miel' || occasion === 'seduccion') {
       matched = byId('jean-paul-gaultier-le-male-elixir');
-    } else if (scentFamily === 'ambar' || occasion === 'firma') {
-      matched = byId('aurelia-essence-d-ambre');
-    } else if (scentFamily === 'oud') {
+    } else if (scentFamily === 'oud' || occasion === 'firma') {
       matched = byId('lattafa-oud-for-glory');
     } else if (scentFamily === 'frutal') {
       matched = byId('al-haramain-amber-oud-gold');
@@ -116,7 +114,7 @@ export const OlfactoryQuizModal: React.FC<OlfactoryQuizModalProps> = ({
                 { id: 'noche', label: 'Citas nocturnas & Romance', desc: 'Seductor, dulce, acogedor' },
                 { id: 'oficina', label: 'Uso diario & Oficina', desc: 'Fresco, limpio, profesional' },
                 { id: 'seduccion', label: 'Fiestas & Eventos', desc: 'Gran proyección y cumplidos' },
-                { id: 'firma', label: 'Firma personal única', desc: 'Autor, nicho, diferenciador' },
+                { id: 'firma', label: 'Firma personal única', desc: 'Intensa, distinta, que te identifique' },
               ].map((opt) => (
                 <button
                   key={opt.id}
@@ -150,7 +148,6 @@ export const OlfactoryQuizModal: React.FC<OlfactoryQuizModalProps> = ({
                 { id: 'vainilla', label: 'Café, Vainilla & Canela', desc: 'Gourmand cálido y adictivo' },
                 { id: 'citrico', label: 'Cítricos & Maderas ahumadas', desc: 'Limonado, viril y versátil' },
                 { id: 'miel', label: 'Miel dorada, Tabaco & Haba Tonka', desc: 'Opulento y muy elegante' },
-                { id: 'ambar', label: 'Ámbar blanco & Higo mediterráneo', desc: 'Artesanal, botánico y sutil' },
                 { id: 'oud', label: 'Oud misterioso & Azafrán', desc: 'Fuerza oriental exótica' },
                 { id: 'frutal', label: 'Melón dulce, Piña & Ámbar', desc: 'Explosión frutal chispeante' },
               ].map((opt) => (

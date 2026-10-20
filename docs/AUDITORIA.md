@@ -9,7 +9,7 @@ Severidad: 🔴 bloquea la venta o engaña al cliente · 🟠 se nota y resta co
 | Estado          | Cantidad |
 | --------------- | -------- |
 | Corregido       | 40       |
-| Pendiente (requiere al dueño) | 5 |
+| Pendiente (requiere al dueño) | 4 |
 
 Los pendientes son de **contenido**, no de código: fotos reales, precios y revisión legal.
 
@@ -19,13 +19,20 @@ Los pendientes son de **contenido**, no de código: fotos reales, precios y revi
 
 | # | Sev. | Hallazgo | Qué hacer |
 | - | ---- | -------- | --------- |
-| P2 | 🔴 | **La foto de "Creed Aventus Millésime" muestra un Armaf Club de Nuit Intense** (otro producto, otra marca). | Reemplazar `public/img/aventus-millesime.jpg` por la foto real. |
 | P3 | 🟠 | **La foto de "Bade'e Al Oud" muestra un frasco que dice "Royal Oud".** "Amber Oud Gold" muestra tres frascos genéricos. | Fotos reales de cada producto. |
-| P4 | 🟠 | **Todas las fotos son de 512 px** y varias salen de capturas de un mockup web (recortadas en esta revisión). Se ven pixeladas en pantallas grandes. "Aurélia Essence d'Ambre" de "Mirage Atelier" parece un producto inventado por el generador de diseño. | Fotos propias de al menos 1200 px. Confirmar si Aurélia existe; si no, sacarla del catálogo. |
-| P5 | 🟠 | Precios, longevidad y "batch codes" del catálogo son de ejemplo. | Cargar datos reales en `src/data/fragrances.ts`. |
+| P4 | 🟠 | **Todas las fotos son de 512 px** y varias salen de capturas de un mockup web (recortadas en esta revisión). Se ven pixeladas en pantallas grandes. | Fotos propias de al menos 1200 px. |
+| P5 | 🟠 | El catálogo tiene 6 perfumes de ejemplo (5 árabes y 1 de diseñador), con precios y datos ficticios. | Cargar el catálogo real en `src/data/fragrances.ts`. |
 | P6 | 🟡 | Textos legales redactados como base (Ley 24.240, Res. 424/2020, Ley 25.326). | Revisarlos con un contador o abogado. |
 
 ---
+
+## Ajustes del negocio (pedidos por Tino)
+
+- Solo perfumería **árabe y de diseñador**: se quitaron "Aurélia Essence d'Ambre" (de autor) y "Creed Aventus Millésime" (nicho; además su foto era de otro perfume). También se quitaron todas las menciones a "nicho".
+- Ubicación: **Santiago del Estero** (antes decía Buenos Aires).
+- Pagos: **efectivo y transferencia**. Se quitaron Mercado Pago y las cuotas.
+- **Sin descuentos por ahora.** El descuento por transferencia queda en 0 en `src/config/site.ts` y no se muestra en ningún lado; si se vuelve a poner, aparece solo.
+- Nueva opción de entrega: **retiro en Santiago del Estero**, sin cargo y a coordinar. Si alguien elige efectivo con envío por correo, se le avisa que los envíos se pagan por transferencia.
 
 ## Hallazgos por sección (corregidos)
 

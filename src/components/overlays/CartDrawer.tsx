@@ -44,7 +44,7 @@ const OptionButton: React.FC<{
 
 export const CartDrawer: React.FC<CartDrawerProps> = ({ onClose, items, onUpdateQuantity, onRemoveItem }) => {
   const panelRef = useDialog(onClose);
-  const [payment, setPayment] = useState<PaymentMethod>('transferencia');
+  const [payment, setPayment] = useState<PaymentMethod>(SITE.paymentMethods[0].id);
   const [shipping, setShipping] = useState<ShippingOptionId>(SITE.shippingOptions[0].id);
   const [customer, setCustomer] = useState(() => storage.get(CUSTOMER_KEY, { name: '', city: '' }));
   const [orderSent, setOrderSent] = useState(false);
@@ -92,7 +92,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onClose, items, onUpdate
           </button>
         </div>
 
-        {items.length > 0 && (
+        {items.length > 0 && !t.isPickup && (
           <div className="px-5 py-2.5 bg-secondary-container/60 border-b border-secondary/30 text-xs font-work text-primary">
             <p className="flex items-center gap-2">
               <span aria-hidden>✦</span>
@@ -193,36 +193,41 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onClose, items, onUpdate
                   Método de pago
                 </p>
                 <div className="grid grid-cols-2 gap-2 text-xs font-work">
-                  <OptionButton
-                    active={payment === 'transferencia'}
-                    onClick={() => setPayment('transferencia')}
-                    title="Transferencia"
-                    hint={`${discountPct}% OFF`}
-                    highlight
-                  />
-                  <OptionButton
-                    active={payment === 'mercadopago'}
-                    onClick={() => setPayment('mercadopago')}
-                    title="Mercado Pago"
-                    hint={SITE.installmentsLabel}
-                  />
+                  {SITE.paymentMethods.map((m) => {
+                    const withDiscount = m.id === 'transferencia' && discountPct > 0;
+                    return (
+                      <OptionButton
+                        key={m.id}
+                        active={payment === m.id}
+                        onClick={() => setPayment(m.id)}
+                        title={m.label}
+                        hint={withDiscount ? `${discountPct}% OFF` : m.hint}
+                        highlight={withDiscount}
+                      />
+                    );
+                  })}
                 </div>
+                {payment === 'efectivo' && !t.isPickup && (
+                  <p className="mt-2 font-garamond text-xs text-on-surface-variant italic">
+                    El efectivo es para entregas en mano en Santiago del Estero. Para envíos por correo se paga por transferencia.
+                  </p>
+                )}
               </fieldset>
 
               <fieldset className="p-3 bg-surface-container rounded-xl border border-outline-variant/60">
-                <legend className="sr-only">Envío</legend>
+                <legend className="sr-only">Entrega</legend>
                 <div className="flex items-center justify-between mb-2" aria-hidden>
-                  <p className="font-work text-xs uppercase tracking-wider text-primary font-bold">Envío</p>
-                  {t.freeShipping && <span className="text-[10px] text-secondary font-work font-bold uppercase">¡Bonificado!</span>}
+                  <p className="font-work text-xs uppercase tracking-wider text-primary font-bold">Entrega</p>
+                  {t.freeShipping && !t.isPickup && <span className="text-[10px] text-secondary font-work font-bold uppercase">¡Bonificado!</span>}
                 </div>
-                <div className="grid grid-cols-2 gap-2 text-xs font-work">
+                <div className="grid grid-cols-1 gap-2 text-xs font-work">
                   {SITE.shippingOptions.map((o) => (
                     <OptionButton
                       key={o.id}
                       active={shipping === o.id}
                       onClick={() => setShipping(o.id)}
                       title={o.label}
-                      hint={t.freeShipping ? 'Gratis' : formatARS(o.cost)}
+                      hint={o.cost === 0 ? 'Sin cargo · coordinamos día y lugar' : t.freeShipping ? 'Gratis' : formatARS(o.cost)}
                     />
                   ))}
                 </div>
@@ -271,7 +276,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onClose, items, onUpdate
               )}
               <div className="flex justify-between text-on-surface-variant">
                 <dt>Envío</dt>
-                <dd>{t.shippingCost === 0 ? '¡Gratis!' : formatARS(t.shippingCost)}</dd>
+                <dd>{t.isPickup ? 'Sin cargo' : t.shippingCost === 0 ? '¡Gratis!' : formatARS(t.shippingCost)}</dd>
               </div>
               <div className="flex justify-between text-base font-bold text-primary pt-2 border-t border-outline-variant/40">
                 <dt>Total</dt>

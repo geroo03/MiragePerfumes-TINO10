@@ -1,7 +1,7 @@
 import React from 'react';
 import { SITE } from '../../config/site';
 
-const HERO_IMG = `${import.meta.env.BASE_URL}img/hero-aurelia.jpg`;
+const HERO_IMG = `${import.meta.env.BASE_URL}img/bade-al-oud.jpg`;
 
 interface HeroSectionProps {
   onExploreCatalog: () => void;
@@ -27,7 +27,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <div className="inline-flex items-center gap-1.5 px-3.5 py-1 bg-surface-container border border-outline-variant/50 rounded-full mb-3 shadow-xs">
               <span className="text-secondary text-[10px]">✦</span>
               <span className="font-work text-[10px] md:text-[11px] tracking-[0.16em] uppercase text-secondary font-semibold">
-                EST. {SITE.foundedYear} · PERFUMERÍA DE AUTOR &amp; NICHO
+                EST. {SITE.foundedYear} · PERFUMERÍA ÁRABE &amp; DE DISEÑADOR
               </span>
               <span className="text-secondary text-[10px]">✦</span>
             </div>
@@ -49,7 +49,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </h1>
 
             <p className="font-garamond text-base sm:text-lg md:text-xl text-on-surface-variant max-w-xl mb-6 leading-relaxed">
-              Originales importados, joyas árabes de nicho y decants artesanales macerados con extrema delicadeza. Enviamos a todo el territorio argentino con embalaje seguro grado farmacéutico.
+              Perfumes originales árabes y de diseñador, en frasco completo o en decants para probar antes de comprar. Enviamos a todo el territorio argentino con embalaje seguro grado farmacéutico.
             </p>
 
             {/* Mobile Oval showcase shown in center on small screens */}
@@ -149,9 +149,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent flex flex-col justify-end p-6 text-center text-surface-container-low">
                   <span className="font-work text-[10px] uppercase tracking-[0.2em] text-surface-container-high">
-                    Extrait de Parfum
+                    Colección árabe
                   </span>
-                  <p className="font-playfair text-lg italic">Maceración Lenta</p>
+                  <p className="font-playfair text-lg italic">Oud, ámbar y especias</p>
                 </div>
               </div>
             </div>
