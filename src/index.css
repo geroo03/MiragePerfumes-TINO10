@@ -5,11 +5,15 @@
   --font-serif: "EB Garamond", Garamond, serif;
   --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
 
+  /* Paleta del atelier (verde oliva + crema). Usar siempre estos tokens, nunca hex sueltos. */
   --color-primary: #28331a;
   --color-primary-container: #3e4a2f;
   --color-secondary: #566341;
   --color-secondary-container: #d6e5bb;
   --color-on-secondary-container: #5a6745;
+  --color-secondary-fixed: #d9e8c3;
+  --color-secondary-fixed-dim: #bdcca3;
+  --color-on-secondary-fixed: #161e0d;
   --color-tertiary: #2a3320;
   --color-tertiary-container: #404935;
   --color-surface: #fef9ed;
@@ -22,15 +26,58 @@
   --color-on-surface-variant: #45483f;
   --color-outline: #76786e;
   --color-outline-variant: #c6c8bc;
+  /* Acentos sobre fondos oscuros */
+  --color-sage: #dce6ca;
+  --color-sage-muted: #c0caaf;
+  --color-error: #ba1a1a;
+
+  --animate-fadeIn: fadeIn 0.2s ease-out both;
+  --animate-scaleIn: scaleIn 0.22s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-slideLeft: slideLeft 0.28s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-slideDown: slideDown 0.25s ease-out both;
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.96) translateY(6px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes slideLeft {
+    from { transform: translateX(100%); }
+    to { transform: none; }
+  }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: none; }
+  }
 }
 
 @layer base {
+  html {
+    scroll-padding-top: 7rem;
+  }
   body {
-    background-color: #fef9ed;
-    color: #1d1c14;
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
     font-family: "EB Garamond", Georgia, serif;
     overscroll-behavior-y: none;
     -webkit-tap-highlight-color: transparent;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
@@ -40,6 +87,10 @@
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .font-playfair {
