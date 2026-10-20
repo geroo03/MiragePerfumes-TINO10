@@ -135,4 +135,4 @@ Los pendientes son de **contenido**, no de código: fotos reales, precios y revi
 
 - Chequeo de tipos y build sin errores.
 - 10 tests unitarios: precios, descuentos, envío gratis, consistencia del catálogo y mensaje de WhatsApp.
-- 21 verificaciones de punta a punta en Chrome: bolsa vacía al inicio, agregar desde tarjeta y ficha, URL de la ficha, Escape, link directo, persistencia al recargar, mensaje completo en WhatsApp, búsqueda sin tildes ("cafe" encuentra "Café"), las 9 rutas, la página 404 y el test olfativo. Sin errores de consola ni recursos caídos.
+- 19 verificaciones de punta a punta en Chrome, también sobre el sitio publicado: bolsa vacía al inicio, agregar desde tarjeta y ficha, URL de la ficha, Escape, link directo, persistencia al recargar, mensaje completo al número de WhatsApp, búsqueda sin tildes ("cafe" encuentra "Café"), 5 páginas, 2 casos de 404 y el test olfativo. Sin errores de consola ni recursos caídos.
